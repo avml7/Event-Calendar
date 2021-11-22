@@ -25,15 +25,16 @@ def processLines(lines, numMonths):
     events = [[] for _ in range(numMonths)]
     indices = []
     for line in lines:
-        splitLine = line.split(maxsplit=2)
+        splitLine = line.split(maxsplit=3)
         month = int(splitLine[0])
         day = int(splitLine[1])
-        event = splitLine[2]
+        color = splitLine[2]
+        event = splitLine[3]
         
         if month not in indices:
             indices.append(month)
         i = indices.index(month)
-        events[i].append((day, event))
+        events[i].append((day, event, color))
 
     return events, indices
 
