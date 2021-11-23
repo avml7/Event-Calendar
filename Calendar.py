@@ -2,7 +2,7 @@
 Credit to:
 https://stackoverflow.com/questions/42171990/create-a-one-month-calendar-with-events-on-it-in-python
 
-with some changes made
+with some changes made to add color functionality and save image instead of show
 """
 
 import calendar
@@ -15,11 +15,12 @@ m_names = ['January', 'February', 'March', 'April',
            'October', 'November', 'December']
 
 class Calendar(object):
-    def __init__(self, year, month):
+    def __init__(self, year, month, fontsize=6):
         self.year = year
         self.month = month
         self.cal = calendar.monthcalendar(year, month)
         self.events = [[[] for day in week] for week in self.cal]
+        self.fontsize = fontsize
     
     def _monthday_to_index(self, day):
         'The index of the day in the list of lists'
@@ -32,10 +33,10 @@ class Calendar(object):
          # couldn't find the day
         raise ValueError("There aren't {} days in the month".format(day))
     
-    def add_event(self, day, event_str):
+    def add_event(self, day, event_str, color):
         'insert a string into the events list for the specified day'
         week, w_day = self._monthday_to_index(day)
-        self.events[week][w_day].append(event_str)
+        self.events[week][w_day].append((event_str, color))
     
     def save(self, filename):
         'create the calendar'
@@ -49,12 +50,14 @@ class Calendar(object):
                             str(self.cal[week][week_day]),
                             verticalalignment='top',
                             horizontalalignment='left')
-                contents = "\n".join(self.events[week][week_day])
-                ax.text(.03, .85, contents,
-                        verticalalignment='top',
-                        horizontalalignment='left',
-                        fontsize=9)
-
+                if len(self.events[week][week_day]) == 1:
+                    event, textColor = self.events[week][week_day][0]
+                    ax.text(.03, .8, event, #.85
+                            verticalalignment='top',
+                            horizontalalignment='left',
+                            fontsize=self.fontsize,
+                            color=textColor,
+                            wrap=True)._get_wrap_line_width = lambda : 70.
         # use the titles of the first row as the weekdays
         for n, day in enumerate(w_days):
             axs[0][n].set_title(day)
