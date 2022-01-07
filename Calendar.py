@@ -38,7 +38,7 @@ class Calendar(object):
         week, w_day = self._monthday_to_index(day)
         self.events[week][w_day].append((event_str, color))
     
-    def save(self, filename):
+    def save(self, filename, path=""):
         'create the calendar'
         f, axs = plt.subplots(len(self.cal), 7, sharex=True, sharey=True)
         for week, ax_row in enumerate(axs):
@@ -65,6 +65,6 @@ class Calendar(object):
         # Place subplots in a close grid
         f.subplots_adjust(hspace=0)
         f.subplots_adjust(wspace=0)
-        f.suptitle(m_names[self.month] + ' ' + str(self.year),
+        f.suptitle(m_names[self.month-1] + ' ' + str(self.year),
                    fontsize=20, fontweight='bold')
-        plt.savefig(filename)
+        plt.savefig(path+filename)

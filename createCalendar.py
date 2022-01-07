@@ -5,16 +5,24 @@ def main():
     args = getArgs()
     if args.fontsize is None:
         args.fontsize = 6
+    if args.savepath is not None:
+        if args.savepath[-1] != '/' or args.savepath[-1] != '\\':
+            args.savepath += '/'
+    if args.savepath is None:
+        args.savepath = ""
+    
     with open(args.filename) as file:
         lines = file.readlines()
         lines = [line.rstrip() for line in lines]
     # read file with dates and events
+
     events, monthIndices = processLines(lines, args.numMonths)
     
     for monthlyEvents, monthNumber in zip(events, monthIndices):
-        cal = addEvents(monthNumber-1, monthlyEvents, args.year, args.fontsize)
+        print(monthNumber, m_names[monthNumber-1])
+        cal = addEvents(monthNumber, monthlyEvents, args.year, args.fontsize)
         filename = m_names[monthNumber-1] + str(args.year) + ".png"
-        cal.save(filename)
+        cal.save(filename, args.savepath)
 
 
 def addEvents(month, events, year, fontsize):
@@ -46,6 +54,7 @@ def getArgs():
     parser.add_argument('numMonths', type=int, help="Number of months to be in calendar")
     parser.add_argument('filename', type=str, help="Filename with dates listed")
     parser.add_argument('--fontsize', type=int, required=False, help="Optional argument to specify font size of events")
+    parser.add_argument('--savepath', type=str, required=False, help="Optional argument to specify where to save calendar pngs")
     return parser.parse_args()
 
 
