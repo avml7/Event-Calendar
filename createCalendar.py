@@ -1,15 +1,17 @@
-from Calendar import Calendar, m_names
+from Calendar import Calendar, m_names, page_sizes
 import argparse
 
 def main():
     args = getArgs()
     if args.fontsize is None:
-        args.fontsize = 6
+        args.fontsize = 9
     if args.savepath is not None:
         if args.savepath[-1] != '/' or args.savepath[-1] != '\\':
             args.savepath += '/'
     if args.savepath is None:
         args.savepath = ""
+    if args.pagesize is None:
+        args.pagesize = 'letter'
     
     with open(args.filename) as file:
         lines = file.readlines()
@@ -19,10 +21,9 @@ def main():
     events, monthIndices = processLines(lines, args.numMonths)
     
     for monthlyEvents, monthNumber in zip(events, monthIndices):
-        print(monthNumber, m_names[monthNumber-1])
         cal = addEvents(monthNumber, monthlyEvents, args.year, args.fontsize)
         filename = m_names[monthNumber-1] + str(args.year) + ".png"
-        cal.save(filename, args.savepath)
+        cal.save(filename, args.pagesize, args.savepath)
 
 
 def addEvents(month, events, year, fontsize):
@@ -53,8 +54,9 @@ def getArgs():
     parser.add_argument('year', type=int, help="Year for calendar")
     parser.add_argument('numMonths', type=int, help="Number of months to be in calendar")
     parser.add_argument('filename', type=str, help="Filename with dates listed")
-    parser.add_argument('--fontsize', type=int, required=False, help="Optional argument to specify font size of events")
-    parser.add_argument('--savepath', type=str, required=False, help="Optional argument to specify where to save calendar pngs")
+    parser.add_argument('--fontsize', type=int, required=False, help="Optional argument to specify font size of events (default is 9)")
+    parser.add_argument('--savepath', type=str, required=False, help="Optional argument to specify where to save calendar pngs (default is current directory)")
+    parser.add_argument('--pagesize', type=str, required=False, help="Optional argument to specify page size (default is letter) | Options are: "+str(page_sizes))
     return parser.parse_args()
 
 
