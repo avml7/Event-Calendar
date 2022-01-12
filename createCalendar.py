@@ -18,13 +18,24 @@ def main():
         lines = [line.rstrip() for line in lines]
     # read file with dates and events
 
-    events, monthIndices = processLines(lines, args.numMonths)
+    events, monthIndices = processLines(lines)
     
     for monthlyEvents, monthNumber in zip(events, monthIndices):
         cal = addEvents(monthNumber, monthlyEvents, args.year, args.fontsize)
         filename = m_names[monthNumber-1] + str(args.year) + ".png"
         cal.save(filename, args.pagesize, args.savepath)
 
+def findNumMonths(lines):
+    numMonths = 0
+    seen = [False] * 12
+    for line in lines:
+        splitLine = line.split()
+        month = int(splitLine[0])-1 # -1 to match month number to index
+        if not seen[month]:
+            numMonths += 1
+            seen[month] = True
+
+    return numMonths
 
 def addEvents(month, events, year, fontsize):
     cal = Calendar(year, month, fontsize)
@@ -32,7 +43,8 @@ def addEvents(month, events, year, fontsize):
         cal.add_event(day, event, color)
     return cal
 
-def processLines(lines, numMonths):
+def processLines(lines):
+    numMonths = findNumMonths(lines)
     events = [[] for _ in range(numMonths)]
     indices = []
     for line in lines:
@@ -52,7 +64,6 @@ def processLines(lines, numMonths):
 def getArgs():
     parser = argparse.ArgumentParser()
     parser.add_argument('year', type=int, help="Year for calendar")
-    parser.add_argument('numMonths', type=int, help="Number of months to be in calendar")
     parser.add_argument('filename', type=str, help="Filename with dates listed")
     parser.add_argument('--fontsize', type=int, required=False, help="Optional argument to specify font size of events (default is 9)")
     parser.add_argument('--savepath', type=str, required=False, help="Optional argument to specify where to save calendar pngs (default is current directory)")
