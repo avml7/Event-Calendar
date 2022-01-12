@@ -34,7 +34,7 @@ def findNumMonths(lines):
         if not seen[month]:
             numMonths += 1
             seen[month] = True
-
+            
     return numMonths
 
 def addEvents(month, events, year, fontsize):
