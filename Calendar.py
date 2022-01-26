@@ -2,7 +2,7 @@
 Credit to:
 https://stackoverflow.com/questions/42171990/create-a-one-month-calendar-with-events-on-it-in-python
 
-with some changes made to add color functionality and save image instead of show
+with changes made to add more functionalities
 """
 
 import calendar
