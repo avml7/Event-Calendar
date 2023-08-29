@@ -1,0 +1,66 @@
+1 5 tab:pink Classes begin
+1 17 tab:pink MLK Jr.
+2 26 tab:pink Spring break
+2 27 tab:pink Spring break
+2 28 tab:pink Spring break
+3 1 tab:pink Spring break
+3 2 tab:pink Spring break
+3 3 tab:pink Spring break
+3 4 tab:pink Spring break
+3 5 tab:pink Spring break
+3 6 tab:pink Spring break
+4 19 tab:pink Last day of class
+1 28 tab:red Homework 1
+2 11 tab:red Homework 2
+3 18 tab:red Homework 3
+4 1 tab:red Homework 4
+1 13 tab:purple Homework 1
+1 25 tab:purple Homework 2
+1 27 tab:purple Assignment 1
+2 3 tab:purple Homework 3
+2 10 tab:purple Homework 4
+2 22 tab:purple Homework 5
+2 25 tab:purple Assignment 2a
+3 11 tab:purple Assignment 2b
+3 15 tab:purple Homework 6
+3 17 tab:purple Homework 7
+3 22 tab:purple Homework 8
+3 25 tab:purple Assignment 2c
+3 29 tab:purple Assignment 3
+1 13 tab:green Assignment 0
+1 27 tab:green Assignment 1
+2 10 tab:green Assignment 2
+2 17 tab:green Project topic / team
+2 22 tab:green Exam 1
+2 24 tab:green Assignment 3
+3 17 tab:green Project checkpoint
+3 24 tab:green Assignment 4
+4 2 tab:green Exam 2
+4 15 tab:green Project presentations
+1 7 tab:blue Elevator pitch
+1 10 tab:blue Elevator pitch feedback
+1 13 tab:blue Team formation
+1 17 tab:blue Team commitment contract
+1 19 tab:blue Lab 0
+1 19 tab:blue Quiz 0
+1 24 tab:blue Project proposal
+1 31 tab:blue Draft storyboard and engine architecture
+2 2 tab:blue Lab 1
+2 2 tab:blue Quiz 1
+2 4 tab:blue Project proposal feedback
+2 7 tab:blue 1st peer evaluation
+2 11 tab:blue Last chance to switch project team
+2 16 tab:blue Lab 2
+2 16 tab:blue Quiz 2
+2 21 tab:blue Draft UI/UX flow and prototype usability
+3 9 tab:blue Lab 3
+3 9 tab:blue Quiz 3
+3 11 tab:blue Prototype usability test results
+3 14 tab:blue UI/UX
+3 18 tab:blue Skeletal product checkpoint
+3 23 tab:blue Lab 4
+2 23 tab:blue Quiz 4
+3 25 tab:blue UI/UX feedback
+3 25 tab:blue 2nd peer evaluation
+4 11 tab:blue MVP final code drop
+4 19 tab:blue MVP presentation
