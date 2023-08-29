@@ -15,8 +15,7 @@ m_names = ['January', 'February', 'March', 'April',
            'May', 'June', 'July', 'August', 'September',
            'October', 'November', 'December']
 page_sizes = {'letter': (11.0, 8.5),
-              'legal': (14.0, 8.5),
-              'extraLarge': (20.0, 15.0)}
+              'legal': (14.0, 8.5)}
 
 class Calendar(object):
     def __init__(self, year, month, fontsize=9):
